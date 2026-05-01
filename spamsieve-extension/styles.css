@@ -1,0 +1,266 @@
+/* ============================================================
+   SpamSieve — styles.css
+   Injected into Gmail. All rules are scoped to #spamsieve-*
+   and .ss-* to avoid breaking Gmail's own styles.
+   ============================================================ */
+
+/* ── BANNER BASE ──────────────────────────────────────────── */
+#spamsieve-banner {
+  all: initial;
+  display: block;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  line-height: 1.4;
+  margin: 6px 16px 4px;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.12);
+  transition: all 0.25s cubic-bezier(0.4,0,0.2,1);
+  animation: ss-slide-in 0.3s cubic-bezier(0.4,0,0.2,1) both;
+  z-index: 999;
+  position: relative;
+}
+
+@keyframes ss-slide-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* ── BANNER VARIANTS ──────────────────────────────────────── */
+#spamsieve-banner.ss-banner--loading {
+  background: #f8f9fa;
+  border: 1px solid #e0e0e0;
+}
+
+#spamsieve-banner.ss-banner--spam {
+  background: linear-gradient(135deg, #fff5f5 0%, #fff0f0 100%);
+  border: 1.5px solid #fca5a5;
+  box-shadow: 0 2px 16px rgba(239,68,68,0.12);
+}
+
+#spamsieve-banner.ss-banner--safe {
+  background: linear-gradient(135deg, #f0fdf4 0%, #ecfdf5 100%);
+  border: 1.5px solid #6ee7b7;
+  box-shadow: 0 2px 16px rgba(16,185,129,0.1);
+}
+
+#spamsieve-banner.ss-banner--error {
+  background: #fffbeb;
+  border: 1.5px solid #fcd34d;
+}
+
+/* ── INNER LAYOUT ─────────────────────────────────────────── */
+#spamsieve-banner .ss-banner__inner {
+  all: initial;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  color: #202124;
+}
+
+/* ── ICON ─────────────────────────────────────────────────── */
+#spamsieve-banner .ss-banner__icon {
+  all: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  flex-shrink: 0;
+}
+
+.ss-banner--spam .ss-banner__icon {
+  background: rgba(239,68,68,0.12);
+  color: #dc2626;
+}
+
+.ss-banner--safe .ss-banner__icon {
+  background: rgba(16,185,129,0.12);
+  color: #059669;
+}
+
+.ss-banner--spam .ss-banner__icon svg { stroke: #dc2626; }
+.ss-banner--safe .ss-banner__icon svg { stroke: #059669; }
+
+/* ── TEXT BLOCK ───────────────────────────────────────────── */
+#spamsieve-banner .ss-banner__info {
+  all: initial;
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  flex: 1;
+  min-width: 0;
+}
+
+#spamsieve-banner .ss-banner__label {
+  all: initial;
+  display: block;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+}
+
+.ss-banner--spam .ss-banner__label { color: #b91c1c; }
+.ss-banner--safe .ss-banner__label { color: #065f46; }
+
+#spamsieve-banner .ss-banner__keywords {
+  all: initial;
+  display: block;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 11px;
+  color: #5f6368;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#spamsieve-banner .ss-banner__text {
+  all: initial;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  color: #5f6368;
+}
+
+/* ── SCORE BAR ────────────────────────────────────────────── */
+#spamsieve-banner .ss-banner__score {
+  all: initial;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 4px;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  flex-shrink: 0;
+}
+
+#spamsieve-banner .ss-score-bar {
+  all: initial;
+  display: block;
+  width: 80px;
+  height: 5px;
+  background: rgba(0,0,0,0.08);
+  border-radius: 99px;
+  overflow: hidden;
+}
+
+#spamsieve-banner .ss-score-bar__fill {
+  all: initial;
+  display: block;
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.6s cubic-bezier(0.4,0,0.2,1);
+}
+
+.ss-banner--spam .ss-score-bar__fill {
+  background: linear-gradient(90deg, #f97316, #ef4444);
+}
+
+.ss-banner--safe .ss-score-bar__fill {
+  background: linear-gradient(90deg, #34d399, #10b981);
+}
+
+#spamsieve-banner .ss-banner__pct {
+  all: initial;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.ss-banner--spam .ss-banner__pct { color: #dc2626; }
+.ss-banner--safe .ss-banner__pct { color: #059669; }
+
+/* ── BUTTONS ──────────────────────────────────────────────── */
+#spamsieve-banner .ss-btn {
+  all: initial;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  cursor: pointer;
+  flex-shrink: 0;
+  transition: background 0.15s ease;
+  color: #5f6368;
+}
+
+#spamsieve-banner .ss-btn:hover {
+  background: rgba(0,0,0,0.07);
+}
+
+#spamsieve-banner .ss-btn svg {
+  stroke: #5f6368;
+}
+
+/* ── LOADING SPINNER ──────────────────────────────────────── */
+#spamsieve-banner .ss-spinner {
+  all: initial;
+  display: block;
+  width: 16px;
+  height: 16px;
+  border: 2px solid rgba(66,133,244,0.2);
+  border-top-color: #4285f4;
+  border-radius: 50%;
+  animation: ss-spin 0.7s linear infinite;
+  flex-shrink: 0;
+}
+
+@keyframes ss-spin {
+  to { transform: rotate(360deg); }
+}
+
+#spamsieve-banner .ss-banner__engine {
+  all: initial;
+  display: block;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 10px;
+  color: #9aa0a6;
+  letter-spacing: 0.03em;
+  margin-top: 1px;
+}
+
+/* ── TOOLBAR BUTTON ───────────────────────────────────────── */
+#spamsieve-btn {
+  all: initial;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 12px;
+  border-radius: 20px;
+  background: #fff;
+  border: 1px solid #dadce0;
+  cursor: pointer;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  color: #3c4043;
+  font-weight: 500;
+  transition: background 0.15s ease, box-shadow 0.15s ease;
+  margin-left: 8px;
+  vertical-align: middle;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+  user-select: none;
+}
+
+#spamsieve-btn:hover {
+  background: #f8f9fa;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+#spamsieve-btn svg {
+  stroke: #ea4335;
+  flex-shrink: 0;
+}
+
+#spamsieve-btn span {
+  all: initial;
+  font-family: 'Google Sans', Roboto, Arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500;
+  color: #3c4043;
+}
